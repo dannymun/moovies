@@ -1,0 +1,63 @@
+    /* var header = $('')
+             $('#app-header').find('h1')
+             var a = $('<a>', {
+                 href: 'http://platzi.com',
+                 target: '_blank',
+                 html: 'ir a platzi'
+             })
+             $('#app-body').append(a);
+             getter>>muestra el atributo
+             (a.atrr('href'))
+             setter>>modifica el atributo
+             (a.atrr('href', url a modifica - o propiedad a modificar))
+             modificar clases
+            var $h1 = ('h1')
+            $h1.addClass('danger')
+            $h1.toggleClass('danger')
+            $h1.removeClass('danger')
+            manipulacion css
+            $('h1').css({
+            atributos de css
+            })
+             */
+como animar con jquery : $tvShowContainer.on('click', 'button.like', function(ev) {
+         var $this = $(this);
+         $this.animate({
+             'fontSize': '30px'
+         }, 'fast');
+     })
+
+segunda manera de hacer una animacion con jequer:
+ $this.closest('.tv-show').addClass('liked');
+
+ uso de NPM
+browerify siempre es una dependencia de desarrollo que no se incluir en el codigo final del proyecto
+
+
+se pueden crear tareas automatizadas en este caso para browserify para generar un bunddle file que condensa todo en un solo file js
+
+"scripts": {
+        "build-js": "browserify index.js > app.js"
+    }
+
+ecmascript 2015 un nuevo estandar de JS para hacer uso del mismo sin afectar navegadores se usa bbel, y em npm el plugin babelify, se instala con npm en conjunto con sus preset en este caso preset es2015:
+npm i --save-dev babel-preset-es2015
+
+por otro en el uso de ES2015 en indexJS cambiamos:
+
+var $ = require('plugin') por ejmeplo
+import $ from 'jquery';
+
+agregamos en el package.json dentro del script para broserify el siguiente codigo:
+-t [ babelify --presets [es2015] ] ejemplo
+"build-js": "browserify -t [ babelify --presets [es2015] ] index.js > app.js"
+
+
+montamos un servidor local con el plug serve npm i --save serve
+y agregamos al script del package.json un task llavado server que ejecute server public
+
+
+modulacion del proyecto
+se crean diferentes directorios para los modulos, y dentro de cada modulo se crean archivos js que contendran las funcionalidades para que asi browserify condense todo en un solo js final
+
+se usa impor jqery para cada index.js y export para cada modulo
